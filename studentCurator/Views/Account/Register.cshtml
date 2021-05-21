@@ -1,0 +1,49 @@
+﻿@model studentCurator.Models.RegisterViewModel
+@{
+     Layout = "_Layout";
+ }
+<h2>Регистрация нового пользователя</h2>
+<form method="post" asp-controller="Account" asp-action="Register">
+    <div asp-validation-summary="ModelOnly">
+        
+    </div>
+    <div class="form-group">
+        <label asp-for="Name"></label><br />
+        <input class="form-control" asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="SurName"></label><br />
+        <input class="form-control" asp-for="SurName" />
+        <span asp-validation-for="SurName"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Father"></label><br />
+        <input class="form-control" asp-for="Father" />
+        <span asp-validation-for="Father"></span>
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="Email"></label><br />
+        <input class="form-control" asp-for="Email" />
+        <span asp-validation-for="Email"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Cathedra"></label><br />
+        <input class="form-control" asp-for="Cathedra" />
+        <span asp-validation-for="Cathedra"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Password"></label><br />
+        <input class="form-control" asp-for="Password" />
+        <span asp-validation-for="Password"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PasswordConfirm"></label><br />
+        <input class="form-control" asp-for="PasswordConfirm" />
+        <span asp-validation-for="PasswordConfirm"></span>
+    </div>
+    <div class="form-group">
+        <input class="btn btn-primary" type="submit" value="Регистрация" />
+    </div>
+</form>

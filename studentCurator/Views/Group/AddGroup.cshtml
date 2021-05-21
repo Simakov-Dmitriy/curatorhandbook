@@ -1,0 +1,32 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model studentCurator.Models.Group
+@inject UserManager<User> _userManager
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+    var currentUser = await _userManager.GetUserAsync(User);
+}
+
+<h2>Чтобы добавить новую группу заполните необходимые поля и нажмите "Добавить"</h2>
+
+<form method="post" asp-controller="Group" asp-action="AddGroup">
+    <span class="form-inline"><input style="display: none" asp-for="UserId" value="@currentUser.Id"/></span>
+    <div class="form-group">
+        <label for="faculty">Факультет</label>
+        <input class="form-control" asp-for="Faculty" id="faculty">
+        <span asp-validation-for="Faculty" style="color: red"></span>
+    </div>
+    <div class="form-group">
+        <label for="course">Курс</label>
+        <input class="form-control" asp-for="Course" id="course">
+        <span asp-validation-for="Course" style="color: red"></span>
+    </div>
+    <div class="form-group">
+        <label for="group">Группа</label>
+        <input class="form-control" asp-for="GroupNumber" id="group">
+        <span asp-validation-for="GroupNumber" style="color: red"></span>
+    </div>
+    <div class="form-group">
+        <input class="form-control" type="submit" value="Добавить">
+    </div>
+</form>

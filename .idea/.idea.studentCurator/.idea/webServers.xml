@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="f92583c6-3795-4101-8477-378e43dcba48" name="ftpcuratorhandbook" url="http://www.curatorhandbook.somee.com">
+        <fileTransfer rootFolder="/wwwroot" host="155.254.244.28" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

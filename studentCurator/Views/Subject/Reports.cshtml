@@ -1,0 +1,117 @@
+﻿@using System.Linq
+@using Microsoft.AspNetCore.Identity
+@model studentCurator.Models.ApplicationContext
+@inject UserManager<User> _userManager
+@{
+    ViewBag.Title = "Reports";
+    Layout = "_Layout";
+    int currentGroupId = ViewBag.GroupId == null ? 0 : ViewBag.GroupId;
+    var currentUser = await _userManager.GetUserAsync(User);
+    int count = 1;
+    if (ViewBag.startDate == DateTime.MinValue)
+    {
+        ViewBag.startDate = null;
+    }
+    if (ViewBag.endDate == DateTime.MinValue)
+    {
+        ViewBag.endDate = null;
+    }
+}
+<script>
+
+function Insert() {
+    document.resultform1.startDate.value = document.startdateform.startdate.value
+    document.resultform1.endDate.value = document.enddateform.enddate.value
+    document.resultform1.resultSubject.value = document.subjectform.subject.value
+}
+</script>
+<h2>Страница отчетов</h2>
+<h3>Для начала выберите группу</h3>
+@foreach (var item in Model.Groups.Where(i => i.UserId == currentUser.Id).ToList())
+{
+    <a class="btn btn-info" role="button" asp-action="Reports" asp-controller="Subject" asp-route-id="@item.Id">
+        @item.GroupNumber
+    </a>
+}
+@if (currentGroupId != 0)
+{
+    <p>Группа: @Model.Groups.FirstOrDefault(i => i.Id == currentGroupId)?.GroupNumber</p>
+    <h3>Теперь выберите предмет и даты отчета</h3>
+    <br/>
+    <br/>
+    if (ViewBag.startDate == null)
+{
+    <label for="startdateform" style="color: red">Вы не указали стартовую дату</label>
+}
+    <form name="startdateform" id="startdateform">
+        <label for="startDate">Начальная дата</label>
+        <input style="width: 300px" class="form-control" type="date" name="startdate" value="@ViewBag.startDate?.ToString("yyyy-MM-dd")">
+    </form>
+if (ViewBag.endDate == null)
+{
+    <label for="endtdateform" style="color: red">Вы не указали конечную дату</label>
+}
+    <form name="enddateform" id="enddateform">
+        <label for="startDate">Конечная дата</label>
+        <input style="width: 300px" class="form-control" type="date" name="enddate" value="@ViewBag.endDate?.ToString("yyyy-MM-dd")">
+    </form>
+    <form name="subjectform">
+        <label for="subject">Предмет</label>
+        <select style="width: 300px" class="form-control" id="subject" name="subject">
+            @foreach (var subject in Model.Subjects.Where(i => i.GroupId == currentGroupId).ToList())
+            {
+                <option>
+                    @subject.Name
+                </option>
+            }
+        </select>
+    </form>
+    <br/>
+    <br/>
+    <form name="resultform1"  class="form-inline" asp-controller="Subject" asp-action="Reports" asp-route-id="@currentGroupId">
+        <input style="display: none" type="date" name="startDate">
+        <input style="display: none" type="date" name="endDate">
+        <input style="display: none" type="text" name="resultSubject">
+        <input class="btn btn-primary" type="submit" value="Получить статистику" onclick="Insert()">
+    </form>
+    <br/>
+    <br/>
+}
+@if (currentGroupId != 0 && ViewBag.startDate != null && ViewBag.endDate != null && ViewBag.resultSubject != null && ViewBag.studentsAttendance != null)
+{
+    <p>Отчет по датам: @ViewBag.startDate?.ToString("MM/dd/yyyy") - @ViewBag.endDate?.ToString("MM/dd/yyyy")</p>
+    <p>Отчет по предмету: @ViewBag.resultSubject</p>
+    <table class="table" id="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">
+                #
+            </th>
+            <th scope="col">
+                Студент
+            </th>
+            <th scope="col">
+                посещение предмета
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var student in Model.Students.Where(i => i.GroupId == currentGroupId).ToList())
+        {
+            <tr>
+                <th scope="row">
+                    @count
+                </th>
+                <td>
+                    @student.Name @student.SurName
+                </td>
+                <td>
+                    <span>@Html.Raw(ViewBag.studentsAttendance[student.Id])</span>
+                </td>
+
+            </tr>
+        }
+        </tbody>
+    </table>
+    <a class="btn btn-primary" href="javascript:window.print(); void 0;">Сохранить в pdf или распечатать</a>
+}

@@ -1,0 +1,48 @@
+﻿@model studentCurator.Models.ApplicationContext
+
+@{
+    Layout = "_Layout";
+    int count = 1;
+    int? groupId = ViewBag.GroupId;
+    var currentGroup = Model.Groups.FirstOrDefault(i => i.Id == groupId);
+}
+<section>
+    <nav style="float: left; padding: 20px;">
+        <ul style="list-style-type: none; padding: 0">
+            <li><a class="btn btn-info" style="width: 100px;" role="button" asp-controller="Group" asp-action="Groups">Назад</a></li>
+            <li><a class="btn btn-info" style="width: 100px;" role="button" href="#">Действие</a></li>
+            <li><a class="btn btn-info" style="width: 100px;" role="button" href="#">Действие</a></li>
+        </ul>
+    </nav>
+    <article style="float: left; padding: 20px; width: 70%">
+        <h2>Это сраница студентов группы @currentGroup?.GroupNumber:</h2>
+        <p><a class="btn btn-primary" role="button" asp-controller="Student" asp-action="AddStudent" asp-route-id="@currentGroup?.Id">Добавить студента</a></p>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Имя</th>
+              <th scope="col">Фамилия</th>
+              <th scope="col">Управление</th>
+            </tr>
+          </thead>
+          <tbody>
+          @foreach (var item in Model.Students.Where(i => i.GroupId == currentGroup.Id))
+          {
+              <tr>
+                  <th scope="row">@count</th>
+                  <td>@item.Name</td>
+                  <td>@item.SurName</td>
+                  <td style="width: 200px">
+                      <a class="btn btn-primary" style="width: 200px; margin-bottom: 5px" role="button" asp-controller="Student" asp-action="Edit" asp-route-id="@item.Id">Редактировать</a>
+                                            <form method="post" asp-action="Delete" asp-controller="Student" asp-route-id="@item.Id">
+                                                <input onclick="return confirm('Вы уверены что хотите удалить этого студента?')" class="btn btn-danger" style="width: 200px" role="button" type="submit" value="Удалить">
+                                            </form>
+                  </td>
+              </tr>
+              count++;
+          }
+          </tbody>
+        </table>
+    </article>
+</section>

@@ -1,0 +1,96 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model studentCurator.Models.ApplicationContext
+@inject UserManager<User> _userManager
+@{
+    ViewBag.Title = "Marks";
+    Layout = "_Layout";
+    var currentUser = await _userManager.GetUserAsync(User);
+    int currentGroupId = ViewBag.GroupId == null ? 0 : ViewBag.GroupId;
+    var count = 1;
+    var number = 1;
+}
+<script>
+function displayTable() {
+    var x = document.getElementById('markstable');
+      if (x.style.display === 'none') {
+        x.style.display = 'block';
+      } else {
+        x.style.display = 'none';
+      }
+}
+</script>
+<h2>Страница оценивания</h2>
+<h3>Для начала выберите группу</h3>
+<br/>
+<br/>
+ @foreach (var item in Model.Groups.Where(i => i.UserId == currentUser.Id).ToList())
+ {
+     <a class="btn btn-info" role="button" asp-action="Marks" asp-controller="Student" asp-route-id="@item.Id">
+         @item.GroupNumber
+     </a>
+ }
+@if (currentGroupId != 0)
+{
+    <p>Группа: @Model.Groups.FirstOrDefault(i => i.Id == currentGroupId)?.GroupNumber</p>
+    <h3>
+        Теперь выберите студента и предмет, после чего введите оценку
+    </h3>
+    <br/>
+    <br/>
+    <form asp-controller="Student" asp-action="GetMarks">
+        <label for="student">Студент</label>
+        <select style="width: 300px" class="form-control" id="student" name="student">
+            @foreach (var student in Model.Students.Where(i => i.GroupId == currentGroupId).ToList())
+            {
+                <option type="number" value="@student.Id">@student.Name @student.SurName</option>
+            }
+        </select>
+        <label for="subject">Предмет</label>
+        <select style="width: 300px" class="form-control" id="subject" name="subject">
+            @foreach (var subject in Model.Subjects.Where(i => i.GroupId == currentGroupId).ToList())
+            {
+                <option type="number" value="@subject.Id">@subject.Name</option>
+            }
+        </select>
+        <label style="width: 300px" for="mark">Оценка</label>
+        <input style="width: 300px" class="form-control" type="number" id="mark" name="mark">
+        <br/>
+        <br/>
+        <input class="btn btn-primary" type="submit" value="Сохранить">
+    </form>
+    <br/>
+    <br/>
+    <button class="btn btn-info" onclick="displayTable()">Таблица оценок</button>
+    <br/>
+    <br/>
+    <table id="markstable" class="table" style="display: none">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Студент</th>
+            @foreach (var subject in Model.Subjects.Where(i => i.GroupId == currentGroupId).ToList())
+            {
+                <th scope="col">
+                    @subject.Name
+                </th>
+            }
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var student in Model.Students.Where(i => i.GroupId == currentGroupId).ToList())
+        {
+            <tr>
+                <th scope="row">@count</th>
+                <td>@student.Name @student.SurName</td>
+                @foreach (var subject in Model.Subjects.Where(i => i.GroupId == currentGroupId).ToList())
+                {
+                    <td>
+                        <span class="form-control" style="width: 50px">@Model.Marks.FirstOrDefault(i => i.StudentId == student.Id && i.SubjectId == subject.Id)?.Mark</span>
+                    </td>
+                }
+            </tr>
+            count++;
+        }
+        </tbody>
+    </table>
+}

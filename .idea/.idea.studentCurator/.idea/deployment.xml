@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="ftpcuratorhandbook" remoteFilesAllowedToDisappearOnAutoupload="false">
+    <serverData>
+      <paths name="ftpcuratorhandbook">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$/studentCurator.sln" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/Controllers/AccountController.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/Controllers/GroupController.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/Controllers/HomeController.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/Controllers/StudentController.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/Models/ApplicationContext.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/Models/ChatHub.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/Models/Course.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/Models/ErrorViewModel.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/Models/Event.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/Models/Group.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/Models/LoginViewModel.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/Models/RegisterViewModel.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/Models/Student.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/Models/User.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/Program.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/Properties/launchSettings.json" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/Startup.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/Views/Account/Login.cshtml" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/Views/Account/Register.cshtml" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/Views/Group/AddGroup.cshtml" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/Views/Group/Edit.cshtml" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/Views/Group/Groups.cshtml" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/Views/Home/Index.cshtml" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/Views/Home/Privacy.cshtml" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/Views/Shared/Error.cshtml" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/Views/Shared/_Layout.cshtml" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/Views/Shared/_LoginPartial.cshtml" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/Views/Shared/_ValidationScriptsPartial.cshtml" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/Views/Student/AddStudent.cshtml" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/Views/Student/Edit.cshtml" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/Views/Student/Students.cshtml" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/Views/_ViewImports.cshtml" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/Views/_ViewStart.cshtml" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/appsettings.Development.json" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/appsettings.json" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/obj/Debug/net5.0/studentCurator.AssemblyInfo.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/obj/Debug/net5.0/studentCurator.RazorAssemblyInfo.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/studentCurator.csproj" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/wwwroot/css/site.css" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/wwwroot/favicon.ico" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/wwwroot/js/package-lock.json" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/wwwroot/js/package.json" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/wwwroot/js/site.js" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/wwwroot/lib/bootstrap/LICENSE" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css.map" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css.map" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css.map" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/wwwroot/lib/bootstrap/dist/css/bootstrap.css" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/wwwroot/lib/bootstrap/dist/css/bootstrap.css.map" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css.map" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js.map" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/wwwroot/lib/bootstrap/dist/js/bootstrap.js" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/wwwroot/lib/bootstrap/dist/js/bootstrap.js.map" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js.map" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/wwwroot/lib/jquery-validation-unobtrusive/LICENSE.txt" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/wwwroot/lib/jquery-validation/LICENSE.md" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/wwwroot/lib/jquery-validation/dist/additional-methods.js" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/wwwroot/lib/jquery-validation/dist/additional-methods.min.js" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/wwwroot/lib/jquery-validation/dist/jquery.validate.js" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/wwwroot/lib/jquery-validation/dist/jquery.validate.min.js" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/wwwroot/lib/jquery/LICENSE.txt" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/wwwroot/lib/jquery/dist/jquery.js" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/wwwroot/lib/jquery/dist/jquery.min.js" web="/" />
+            <mapping local="$PROJECT_DIR$/studentCurator/wwwroot/lib/jquery/dist/jquery.min.map" web="/" />
+            <mapping local="$PROJECT_DIR$" web="/" />
+            <mapping local="" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>

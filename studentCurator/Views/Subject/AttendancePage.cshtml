@@ -1,0 +1,97 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model studentCurator.Models.ApplicationContext
+@inject UserManager<User> _userManager
+@{
+    ViewBag.Title = "Attendance";
+    Layout = "_Layout";
+    var currentUser = await _userManager.GetUserAsync(User);
+    int currentGroup = ViewBag.GroupId == null ? 0 : ViewBag.GroupId;
+    int count = 1;
+    var subjects = Model.Subjects.Where(i => i.GroupId == currentGroup).ToList();
+    var students = Model.Students.Where(i => i.GroupId == currentGroup).ToList();
+}
+
+<script>
+function Insert() {
+    document.form1.input1.value = getCheckedCheckBoxes().join()
+    document.form1.day.value = document.formdata.daycheck.value
+}
+function getCheckedCheckBoxes() {
+  var checkboxes = document.getElementsByClassName('checkbox');
+  var checkboxesChecked = [];  
+  for (var index = 0; index < checkboxes.length; index++) {
+     if (checkboxes[index].checked) {
+        checkboxesChecked.push(checkboxes[index].id); 
+             
+     }
+  }
+  return checkboxesChecked;
+}
+
+</script>
+<h2>Нажмите на нужную группу, чтобы отобразить ее студентов и предметы</h2>
+@foreach (var item in Model.Groups.Where(i => i.UserId == currentUser.Id).ToList())
+        {
+            <a class="btn btn-info" role="button" asp-action="AttendancePage" asp-controller="Subject" asp-route-id="@item.Id">
+                @item.GroupNumber
+            </a>
+        }
+@if (ViewBag.problem != null)
+{
+    <span style="color: red">@ViewBag.problem</span>
+}
+@if (currentGroup != 0)
+{
+    <form name="formdata">
+    <label for="daycheck">Выберите дату посещаемости</label>
+    <input style="width: 300px" class="form-control" type="date" id="daycheck" name="daycheck">
+</form>
+<p>Группа: @Model.Groups.FirstOrDefault(i => i.Id == currentGroup)?.GroupNumber</p>
+<table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Студент</th>
+        @foreach (var subject in subjects)
+        {
+            <th scope="col">
+                @subject.Name
+                <form class="form-inline" method="post" asp-controller="Subject" asp-action="Delete" asp-route-id="@subject.Id">
+                    <input class="btn btn-danger" role="button" type="submit" onclick="return confirm('Подтвердите удаление предмета')" value="удалить">
+                </form>
+            </th>
+        }
+        <th>
+            <form class="form-inline" asp-controller="Subject" asp-action="AddSubject">
+                <input style="display: none" id="id" name="id" value="@currentGroup">
+                <input style="width: 200px" class="form-control" name="text" id="text" placeholder="Название предмета">
+                <input style="width: 40px" class="btn btn-primary" type="submit" value="+">
+            </form>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var student in students)
+    {
+        <tr>
+            <th scope="row">@count</th>
+            <td>@student.Name @student.SurName</td>
+            @foreach (var subject in subjects)
+            {
+                <td>
+                    <input class="checkbox" type="checkbox" id="@(student.Id.ToString() + '+' + subject.Id.ToString())"/>
+                </td>
+            }
+        </tr>
+        count++;
+    }
+    </tbody>
+</table>
+<form name="form1" asp-controller="Subject" asp-action="GetStatistics">
+    <input name="input1" style="display: none" type="text">
+    <input name="group" type="number" value="@currentGroup" style="display: none">
+    <input name="day" type="date" style="display: none">
+    <span class="field-validation-valid" data-valmsg-for="day" data-valmsg-replace="true"></span>
+    <input class="btn btn-primary" type="submit" value="Сохранить" onclick="Insert()">
+</form>
+}

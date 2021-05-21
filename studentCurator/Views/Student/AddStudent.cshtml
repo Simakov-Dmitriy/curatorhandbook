@@ -1,0 +1,31 @@
+﻿@model studentCurator.Models.Student
+
+@{
+    ViewBag.Title = "AddStudent";
+    Layout = "_Layout";
+}
+
+<h2>Чтбы добавить нового студента в группу, заполните все необходимые поля и нажмите "Добавить"</h2>
+<form method="post" asp-controller="Student" asp-action="AddStudent">
+    <span class="form-inline"><input style="display: none" asp-for="GroupId" value="@ViewBag.GroupId"/></span>
+    <span class="form-inline"><input style="display: none" asp-for="Faculty" value="@ViewBag.Faculty"/></span>
+    <span class="form-inline"><input style="display: none" asp-for="Course" value="@ViewBag.Course"/></span>
+    <div class="form-group">
+        <label for="name">Имя</label>
+        <input class="form-control" asp-for="Name" id="name">
+        <span asp-validation-for="Name" style="color: red"></span>
+    </div>
+    <div class="form-group">
+        <label for="surname">Фамилия</label>
+        <input class="form-control" asp-for="SurName" id="surname">
+        <span asp-validation-for="SurName" style="color: red"></span>
+    </div>
+    <div class="form-group">
+        <label for="age">Возраст</label>
+        <input class="form-control" asp-for="Age" id="age">
+        <span asp-validation-for="Age" style="color: red"></span>
+    </div>
+    <div class="form-group">
+        <input class="form-control" type="submit" value="Добавить">
+    </div>
+</form>
